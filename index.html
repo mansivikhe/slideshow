@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slideshow</title>
+    <style>
+        .slide {
+            height: 400px;
+            width: 600px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .container {
+            margin: 50px auto;
+            width: fit-content;
+            position: relative;
+
+        }
+
+        .action {
+            position: absolute;
+            height: 80px;
+            top: 40%;
+            cursor: pointer;
+            transition: 0.5s;
+
+        }
+
+        .back {
+            left: 0;
+
+        }
+
+        .back:hover {
+            transform: scale(0.8) translateX(-10px);
+        }
+
+        .next {
+            right: 0;
+        }
+
+        .next:hover {
+            transform: scale(0.8) translateX(10px);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <img src="./img/animal1.jpg" class="slide" id="slide">
+        <img src="./img/back.png" class=" action back" onclick="back()">
+        <img src="./img/next.png" class="action next" onclick="next()">
+    </div>
+
+    <script>
+        const img = [
+            "img/animal1.jpg",
+            "img/animal2.jpg",
+            "img/animal3.jpg",
+            "img/baloon.jpg",
+            "img/cakeimg1.jpg"
+        ];
+        let index = 0; 
+        const slide = document.getElementById('slide');
+        function next() {
+           if(index < img.length -1)
+           {
+            index++;
+           }else{
+            index=0;
+           }
+            slide.src = img[index]
+
+        }
+        function back() {
+            if(index>0)
+           {
+            index--;
+           }else{
+            index = img.length -1;
+           }
+            slide.src = img[index]
+
+
+        }
+        setInterval(next,2000)
+        
+    </script>
+
+</body>
+
+</html>
